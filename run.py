@@ -1,3 +1,7 @@
+'''
+Love Sandwiches Walkthrough Project
+'''
+
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -77,7 +81,7 @@ def calculate_surplus_data(sales_row):
     print("Calculating surplus data...\n")
     stock = SHEET.worksheet("stock").get_all_values()
     stock_row = stock[-1]
-    
+
     surplus_data = []
     for stock, sales in zip(stock_row, sales_row):
         surplus = int(stock) - sales
@@ -114,9 +118,8 @@ def calculate_stock_data(data):
         average = sum(int_column) / len(int_column)
         stock_num = average * 1.1
         new_stock_data.append(round(stock_num))
-    
-    return new_stock_data
 
+    return new_stock_data
 
 
 def main():
